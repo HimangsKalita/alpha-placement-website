@@ -36,6 +36,7 @@ const UserOptions = ({user}) => {
         //   func: cart,
         // },
         { icon: <WorkIcon />, name: "Jobs", func: jobs },
+        
         { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
     ];
 

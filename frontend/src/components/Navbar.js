@@ -22,7 +22,7 @@ export default function Navbar() {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav me-auto mb-2">
         <li className="nav-item">
-          <Link className="nav-link fs-5" aria-current="page" to="/EditorHome">CodeEditor</Link>
+          <Link className="nav-link fs-5" aria-current="page" to="/Editor">CodeEditor</Link>
         </li>
         {/* <li className="nav-item">
           <Link className="nav-link fs-5" aria-current="page" to="/resume">Resume</Link>

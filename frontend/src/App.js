@@ -22,6 +22,8 @@ import { loadUser } from './actions/userAction';
 import UserOptions from "./components/Header/UserOptions.js";
 import { useSelector } from 'react-redux';
 import Profile from "./components/User/Profile.js";
+import Editor from './screens/Editor';
+
 import MyApplications from "./components/Application/MyApplications.js";
 // import UpdateProfile from "./components/User/UpdateProfile.js"
 
@@ -51,6 +53,8 @@ function App() {
           {/* <Route exact path="/adminlogin" element={<AdminLogin />} /> */}
           {/* <Route exact path="/createcompany" element={<CompanySignup />} /> */}
           {/* <Route exact path="/companylogin" element={<CompanyLogin />} /> */}
+          <Route exact path="/editor" element={<Editor />} />
+
           <Route exact path="/job/:id" element={<JobDetails />} />
           <Route exact path="/jobs" element={<Jobs />} />
           <Route  path="/jobs/:keyword" element={<Jobs />} />
