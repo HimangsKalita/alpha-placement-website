@@ -44,18 +44,18 @@ export default function Navbar() {
       
       
     <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle btn btn-secondary border border-light fs-5 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <Link className="nav-link dropdown-toggle btn btn-secondary border border-light fs-5 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Signup
-          </a>
+          </Link>
           <div class="dropdown-menu">
           <Link class="dropdown-item" to="/createuser">User signup</Link>
     <Link class="dropdown-item" to="/createcompany">Company signup</Link>  
           </div>
         </div>
     <div class="nav-item dropdown mx-3 float-right">
-          <a class="nav-link dropdown-toggle btn btn-secondary border border-light fs-5 active" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <Link className="nav-link dropdown-toggle btn btn-secondary border border-light fs-5 active" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Login
-          </a>
+          </Link>
           <div class="dropdown-menu">
           <Link class="dropdown-item" to="/login">User login</Link>
           <Link class="dropdown-item" to="/companylogin">Company login</Link>  

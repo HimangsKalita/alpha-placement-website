@@ -18,6 +18,7 @@ const LoginSignup = () => {
     const dispatch = useDispatch();
     const alert = useAlert();
     const history=useNavigate();
+    const location=useNavigate();
 
     const { error, loading, isAuthenticated } = useSelector(
       (state) => state.user
@@ -67,6 +68,7 @@ const LoginSignup = () => {
         
           setUser({ ...user, [e.target.name]: e.target.value });
       };
+      const redirect = location.search ? location.search.split("=")[1] : "/account";
 
       useEffect(() => {
         if (error) {
@@ -74,10 +76,10 @@ const LoginSignup = () => {
           dispatch(clearErrors());
         }
         if (isAuthenticated) {
-          history("/account");
+          history(redirect);
         }
     
-      }, [dispatch, error, alert, history, isAuthenticated,]);
+      }, [dispatch, error, alert, history, isAuthenticated,redirect]);
 
     const switchTabs = (e, tab) => {
         if (tab === "login") {
@@ -146,6 +148,7 @@ const LoginSignup = () => {
                   <input
                     type="text"
                     placeholder="Name"
+                    pattern=".{}"
                     required
                     name="name"
                     value={name}
@@ -157,6 +160,7 @@ const LoginSignup = () => {
                   <input
                     type="email"
                     placeholder="Email"
+                    pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
                     required
                     name="email"
                     value={email}
@@ -168,9 +172,11 @@ const LoginSignup = () => {
                   <input
                     type="password"
                     placeholder="Password"
+                    pattern=".{8,}"
                     required
                     name="password"
                     value={password}
+                    title="Please enter at least 8 characters"
                     onChange={registerDataChange}
                   />
                 </div>
@@ -179,10 +185,13 @@ const LoginSignup = () => {
                   <input
                     type="password"
                     placeholder="Confirm Password"
+                    pattern={user.password}
                     required
                     name="confirmpassword"
                     value={confirmpassword}
+                    title="Password doesn't match"
                     onChange={registerDataChange}
+                    
                   />
                 </div>
                 <div className="signUpAddress">
@@ -199,14 +208,29 @@ const LoginSignup = () => {
                 <div className="signUpPhone">
                   <LocalPhoneIcon />
                   <input
-                    type="text"
+                    type="tel"
                     placeholder="Phone Number"
+                    pattern="[6-9]\d{9}"
                     required
                     name="phone"
                     value={phone}
+                    title="Phone number format didn't match"
+                    onChange={registerDataChange}
+                />
+                </div>
+                <div className="signUpPhone">
+                  <input
+                    type="text"
+                    placeholder="user or company"
+                    pattern="(user|company)"
+                    required
+                    name="role"
+                    value={role}
+                    title="Please enter user or company"
                     onChange={registerDataChange}
                   />
                 </div>
+
 
                 <input type="submit" value="Register" className="signUpBtn" />
               </form>

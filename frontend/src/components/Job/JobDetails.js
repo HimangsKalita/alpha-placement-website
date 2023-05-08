@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import Loader from "../Loader";
 import { useAlert } from "react-alert";
 import MetaData from "../MetaData";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -18,6 +19,7 @@ const JobDetails = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { id } = useParams();
+  const history = useNavigate()
 
   const { job, loading, error } = useSelector(
     (state) => state.jobDetails
@@ -32,6 +34,10 @@ const JobDetails = () => {
 
     dispatch(getJobDetails(id));
     }, [dispatch,  id, error, alert]);
+
+    const applyHandler = () => {
+      history("/apply");
+    };
 
 
   return (
@@ -73,7 +79,7 @@ const JobDetails = () => {
               <div className="detailsBlock-4">
                 Description : <p>{job.description}</p>
 
-                <button className="applyButton">APPLY</button>
+                <button className="applyButton" onClick={applyHandler}>APPLY</button>
               </div>
             </div>
           </div>

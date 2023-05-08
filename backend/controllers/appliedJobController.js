@@ -43,11 +43,11 @@ exports.getSingleApplyDetail = catchAsyncErrors(async (req, res, next) => {
 
 
   exports.myAppliedJobs = catchAsyncErrors(async (req, res, next) => {
-    const apply = await AppliedJob.find({ user: req.user._id });
+    const applications = await AppliedJob.find({ user: req.user._id });
   
     res.status(200).json({
       success: true,
-      apply,
+      applications,
     });
   });
 

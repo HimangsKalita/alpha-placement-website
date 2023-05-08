@@ -4,17 +4,18 @@ import { legacy_createStore as createStore,combineReducers, applyMiddleware } fr
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { jobDetailReducer, jobsReducer } from "./reducers/jobReducer";
-import { userReducer } from "./reducers/userReducer";
+import { profileReducer, userReducer } from "./reducers/userReducer";
+import { myApplicationsReducer } from "./reducers/applyReducer";
 
 const reducer = combineReducers({
     jobs: jobsReducer,
     jobDetails: jobDetailReducer,
     user: userReducer,
-  //   profile: profileReducer,
+    profile: profileReducer,
   //   forgotPassword: forgotPasswordReducer,
   //   cart: cartReducer,
   //   newOrder: newOrderReducer,
-  //   myOrders: myOrdersReducer,
+    myApplications: myApplicationsReducer,
   //   orderDetails: orderDetailsReducer,
   //   newReview: newReviewReducer,
   //   newProduct: newProductReducer,
