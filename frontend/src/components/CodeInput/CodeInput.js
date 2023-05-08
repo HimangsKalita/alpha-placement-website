@@ -18,11 +18,10 @@ const CodeInput = ({ testInput, setTestInput, setToggled }) => {
 	
 	return (
 		<div
-			className={` sm:border flex flex-col justify-end w-1/2 md:w-full bg-gray-100 h-64 ${
-				toggleInputBar ? "md:h-16" : "md:h-1/3"
+			className={`border border-secondary d-flex flex-column justify-content-end w-50 w-md-100 bg-light h-64 ${toggleInputBar ? "h-md-16" : "h-md-33"
 			}`}>
 			<button
-				className="flex ml-0 items-center bg-gray-200 pt-2 pr-2 rounded-md text-base justify-center w-16"
+				className="d-flex m-0 align-items-center bg-secondary pt-2 pe-2 rounded text-base justify-content-center w-16"
 				onClick={() => {
 					setToggled(!toggleInputBar);
 					setToggleInputBar(!toggleInputBar);
@@ -31,14 +30,14 @@ const CodeInput = ({ testInput, setTestInput, setToggled }) => {
 				<FontAwesomeIcon
 					icon={toggleInputBar ? faSquareCaretUp : faSquareCaretDown}
 					size="xs"
-					className="ml-1"
+					className="ms-1"
 				/>
 			</button>
 			<textarea
 				name=""
 				id=""
-				className={`p-2 outline-none border-none bg-white ${
-					toggleInputBar ? "hidden" : ""
+				className={`p-2 border-0 bg-white ${
+					toggleInputBar ? "d-none" : ""
 				}`}
 				cols="30"
 				rows="15"

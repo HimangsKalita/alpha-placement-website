@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Editor.css";
+// import "./Editor.css";
 import { boilerCodes } from "../boilerCodes";
 import CodeEditor from "../components/CodeEditor/CodeEditor";
 import CodeInput from "../components/CodeInput/CodeInput";
@@ -26,9 +26,9 @@ function Editor() {
   }, [language]);
 
   return (
-    <div className="h-screen w-full">
-      <div className="flex md:flex-row flex-col h-full w-full">
-        <div className="flex h-full flex-col md:w-2/3 w-full ">
+    <div class="vh-100 w-100">
+      <div class="d-flex flex-md-row flex-column vh-100 w-100">
+        <div class="d-flex flex-column w-100 flex-md-grow-2">
           <Navbar
             setLanguage={setLanguage}
             language={language}
@@ -47,11 +47,7 @@ function Editor() {
             language={language}
           />
         </div>
-        <div
-          className="md:w-1/3 border-l-1
-				border-gray-200 flex w-full md:flex-col 
-				flex-row-reverse h-full"
-        >
+        <div class="border-start border-secondary d-flex w-100 flex-grow-1 flex-md-column-reverse h-100">
           <CodeOutput output={output} toggled={toggled} status={status} />
           <CodeInput
             testInput={testInput}
