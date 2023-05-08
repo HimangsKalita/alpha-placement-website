@@ -131,8 +131,3 @@ export const profileReducer = (state = {}, action) => {
         ...state,
         error: null,
       };
-
-    default:
-      return state;
-  }
-}
