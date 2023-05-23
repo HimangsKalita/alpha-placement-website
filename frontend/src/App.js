@@ -25,7 +25,11 @@ import Profile from "./components/User/Profile.js";
 import Editor from './screens/Editor';
 
 import MyApplications from "./components/Application/MyApplications.js";
+import ApplicationDetails from "./components/Application/ApplicationDetails.js" 
+// import Apply from "./components/Application/Apply.js";
 // import UpdateProfile from "./components/User/UpdateProfile.js"
+import Cart from "./components/Cart/Cart.js"
+import ConfirmApply from "./components/Cart/ConfirmApply.js"
 
 
 
@@ -61,7 +65,11 @@ function App() {
           <Route exact path="/search" element={<Search />} />
           <Route exact path="/login" element={<LoginSignup />} />
           <Route exact path="/account" element={< Profile/>} />
+          {/* <Route exact path="/apply" element={< Apply/>} /> */}
           <Route exact path="/applications" element={< MyApplications/>} />
+          <Route exact path="/application/:id" element={< ApplicationDetails/>} />
+          <Route exact path="cart" element={< Cart/>} />
+          <Route exact path="apply" element={< ConfirmApply/>} />
 
           
         </Routes>

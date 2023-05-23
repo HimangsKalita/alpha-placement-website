@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "./myApplications.css";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors,myApplications } from "../../actions/applyAction";
+import { clearErrors,myApplications } from "../../actions/applicationAction";
 import Loader from "../Loader";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
@@ -29,11 +29,12 @@ const MyApplications = () => {
       minWidth: 150,
       flex: 0.5,
       cellClassName: (params) => {
-        return params.getValue(params.id, "staapplicationStatustus") === "Selected"
+        return params.getValue(params.id, "applicationStatustus") === "Selected"
           ? "greenColor"
           : "redColor";
       },
     },
+
     {
         field: "date",
         headerName: "Applied At",
@@ -66,7 +67,8 @@ const MyApplications = () => {
         // itemsQty: item.orderItems.length,
         id: item._id,
         status: item.applicationStatus,
-        date: item.appliedAt,
+        date: (item.appliedAt).substr(0,10),
+        // {String(user.createdAt).substr(0, 10)}
       });
     });
 
@@ -96,7 +98,7 @@ const MyApplications = () => {
           autoHeight
         />
 
-        <Typography id="myApplicationHeading">{user.name}'s Applications</Typography>
+        <Typography class="myApplicationHeading">{user.name}'s Applications</Typography>
       </div>
     )}
   </Fragment>

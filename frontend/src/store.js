@@ -5,7 +5,8 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { jobDetailReducer, jobsReducer } from "./reducers/jobReducer";
 import { profileReducer, userReducer } from "./reducers/userReducer";
-import { myApplicationsReducer } from "./reducers/applyReducer";
+import { applicationDetailsReducer, myApplicationsReducer } from "./reducers/applicationReducer";
+import {cartReducer} from "./reducers/cartReducer"
 
 const reducer = combineReducers({
     jobs: jobsReducer,
@@ -13,10 +14,10 @@ const reducer = combineReducers({
     user: userReducer,
     profile: profileReducer,
   //   forgotPassword: forgotPasswordReducer,
-  //   cart: cartReducer,
+    cart: cartReducer,
   //   newOrder: newOrderReducer,
     myApplications: myApplicationsReducer,
-  //   orderDetails: orderDetailsReducer,
+    applicationDetails: applicationDetailsReducer,
   //   newReview: newReviewReducer,
   //   newProduct: newProductReducer,
   //   product: productReducer,
@@ -33,9 +34,6 @@ const reducer = combineReducers({
       cartItems: localStorage.getItem("cartItems")
         ? JSON.parse(localStorage.getItem("cartItems"))
         : [],
-      shippingInfo: localStorage.getItem("shippingInfo")
-        ? JSON.parse(localStorage.getItem("shippingInfo"))
-        : {},
     },
   };
 

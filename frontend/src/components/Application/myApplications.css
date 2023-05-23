@@ -12,14 +12,14 @@
     flex-direction: column;
   }
   
-  #myApplicationsHeading {
+  .myApplicationsHeading {
     text-align: center;
     font: 400 1.2vmax ;
     padding: 0.5vmax;
     box-sizing: border-box;
     color: rgb(255, 255, 255);
     transition: all 0.5s;
-    background-color: rgb(44, 44, 44);
+    background-color: rgb(0, 0, 0);
   }
   
   .myApplicationsTable {

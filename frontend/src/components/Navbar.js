@@ -2,14 +2,15 @@ import React from 'react'
 import {Link,useNavigate} from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import WorkIcon from '@mui/icons-material/Work';
 export default function Navbar() {
 
-  const navigate=useNavigate();
+  // const navigate=useNavigate();
 
-  const handleLogout=()=>{
-    localStorage.removeItem("authToken");
-    navigate("/login")
-  }
+  // const handleLogout=()=>{
+  //   localStorage.removeItem("authToken");
+  //   navigate("/login")
+  // }
 
   return (
     <div>
@@ -34,9 +35,12 @@ export default function Navbar() {
           <Link className="nav-link fs-5 active" aria-current="page" to="/search"><SearchIcon/></Link>
         </li>
         <li className="nav-item">
+          <Link className="nav-link fs-5 active" aria-current="page" to="/cart"><WorkIcon/></Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link fs-5 active" aria-current="page" to="/login"><AccountBoxIcon/></Link>
         </li>
-        {(!localStorage.getItem("authToken"))?
+        {/* {(!localStorage.getItem("authToken"))?
         
 
       <div className='d-flex float-right'>
@@ -71,7 +75,7 @@ export default function Navbar() {
         Logout
       </div>
       
-    } 
+    }  */}
     {/* <div className='d-flex'>
       <Link className="btn btn-secondary float-right mx-3  border border-light fs-5" to="/login" role="button">Login </Link>
       <Link className="btn btn-secondary float-right border border-light mx-3 fs-5" to="/createuser" role="button">Signup </Link>

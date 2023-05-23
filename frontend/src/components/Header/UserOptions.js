@@ -11,12 +11,13 @@ import WorkIcon from '@mui/icons-material/Work';
 import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from "react-router-dom";
 import { useAlert } from 'react-alert';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { logout } from '../../actions/userAction';
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 
 const UserOptions = ({user}) => {
-
+  const { cartItems } = useSelector((state) => state.cart);
     const [open, setOpen] = useState(false);
     const history=useNavigate();
     const alert = useAlert();
@@ -26,21 +27,21 @@ const UserOptions = ({user}) => {
         { icon: <ListAltIcon />, name: "Applications", func: applications },
         { icon: <PersonIcon />, name: "Profile", func: account },
         { icon: <HomeIcon />, name: "Home", func: home },
-        // {
-        //   icon: (
-        //     <ShoppingCartIcon
-        //       style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}
-        //     />
-        //   ),
-        //   name: `Cart(${cartItems.length})`,
-        //   func: cart,
-        // },
+        {
+          icon: (
+            <ShoppingCartIcon
+              style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}
+            />
+          ),
+          name: `Cart(${cartItems.length})`,
+          func: cart,
+        },
         { icon: <WorkIcon />, name: "Jobs", func: jobs },
         
         { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
     ];
 
-    if (user.role === "admin") {
+    if (user.role === "admin"||"company") {
         options.unshift({
           icon: <DashboardIcon />,
           name: "Dashboard",
@@ -63,6 +64,9 @@ const UserOptions = ({user}) => {
       }
       function jobs() {
         history("/jobs");
+      }
+      function cart() {
+        history("/cart");
       }
       function logoutUser() {
         dispatch(logout());

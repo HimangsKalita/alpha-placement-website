@@ -12,6 +12,7 @@ import Loader from "../Loader";
 import { useAlert } from "react-alert";
 import MetaData from "../MetaData";
 import { useNavigate } from "react-router-dom";
+import {addItemsToCart} from "../../actions/cartAction"
 
 
 
@@ -35,8 +36,10 @@ const JobDetails = () => {
     dispatch(getJobDetails(id));
     }, [dispatch,  id, error, alert]);
 
-    const applyHandler = () => {
-      history("/apply");
+
+    const addToCartHandler = () => {
+      dispatch(addItemsToCart(id));
+      alert.success("Item Added To Cart");
     };
 
 
@@ -79,7 +82,7 @@ const JobDetails = () => {
               <div className="detailsBlock-4">
                 Description : <p>{job.description}</p>
 
-                <button className="applyButton" onClick={applyHandler}>APPLY</button>
+                <button className="applyButton" onClick={addToCartHandler}>ADD TO JOB MANAGER</button>
               </div>
             </div>
           </div>

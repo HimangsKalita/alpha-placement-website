@@ -1,27 +1,19 @@
-import { 
-    MY_APPLICATIONS_REQUEST,
-    MY_APPLICATIONS_FAIL,
-    MY_APPLICATIONS_SUCCESS ,
-    CLEAR_ERRORS
-} from "../constants/applyConstant";
+import { APPLY } from "../constants/applyConstant";
 
-import axios from "axios";
-
-export const myApplications = () => async (dispatch) => {
-    try {
-      dispatch({ type: MY_APPLICATIONS_REQUEST });
+export const applyforjob = (id) => async (dispatch, getState) => {
+    const { data } = await axios.get(`/api/v1/job/${id}`);
   
-      const { data } = await axios.get("/api/v1/applications/me");
+    dispatch({
+      type: APPLY,
+      payload: {
+        job: data.job._id,
+        name: data.job.name,
+        ctc: data.job.price,
+        image: data.job.images[0].url,
+      },
+    });
   
-      dispatch({ type: MY_APPLICATIONS_SUCCESS, payload: data.applications });
-    } catch (error) {
-      dispatch({
-        type: MY_APPLICATIONS_FAIL,
-        payload: error.response.data.message,
-      });
-    }
+    localStorage.setItem("applyItems", JSON.stringify(getState().apply.applyItems));
   };
-
-  export const clearErrors = () => async (dispatch) => {
-    dispatch({ type: CLEAR_ERRORS });
-  };
+  
+  
