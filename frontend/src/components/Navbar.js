@@ -25,9 +25,9 @@ export default function Navbar() {
         <li className="nav-item">
           <Link className="nav-link fs-5" aria-current="page" to="/Editor">CodeEditor</Link>
         </li>
-        {/* <li className="nav-item">
+        <li className="nav-item">
           <Link className="nav-link fs-5" aria-current="page" to="/resume">Resume</Link>
-        </li> */}
+        </li>
         <li className="nav-item">
           <Link className="nav-link fs-5" aria-current="page" to="/jobs">Jobs</Link>
         </li>
