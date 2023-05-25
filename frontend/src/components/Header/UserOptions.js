@@ -41,7 +41,7 @@ const UserOptions = ({user}) => {
         { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
     ];
 
-    if (user.role === "admin"||"company") {
+    if (user.role === "company") {
         options.unshift({
           icon: <DashboardIcon />,
           name: "Dashboard",
@@ -49,8 +49,11 @@ const UserOptions = ({user}) => {
         });
       }
 
+      // function dashboard1() {
+      //   history("/admin/dashboard");
+      // }
       function dashboard() {
-        history("/admin/dashboard");
+        history("/company/dashboard");
       }
     
       function applications() {

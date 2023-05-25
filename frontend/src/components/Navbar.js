@@ -34,12 +34,32 @@ export default function Navbar() {
         <li className="nav-item">
           <Link className="nav-link fs-5 active" aria-current="page" to="/search"><SearchIcon/></Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link className="nav-link fs-5 active" aria-current="page" to="/cart"><WorkIcon/></Link>
-        </li>
+        </li> */}
         <li className="nav-item">
           <Link className="nav-link fs-5 active" aria-current="page" to="/login"><AccountBoxIcon/></Link>
         </li>
+
+        <div class="nav-item dropdown">
+          <Link className="nav-link dropdown-toggle btn btn-secondary border border-light fs-5 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Signup
+          </Link>
+          <div class="dropdown-menu">
+          <Link class="dropdown-item" to="/createuser">User signup</Link>
+    <Link class="dropdown-item" to="/createcompany">Company signup</Link>  
+          </div>
+        </div>
+    <div class="nav-item dropdown mx-3 float-right">
+          <Link className="nav-link dropdown-toggle btn btn-secondary border border-light fs-5 active" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Login
+          </Link>
+          <div class="dropdown-menu">
+          <Link class="dropdown-item" to="/login">User login</Link>
+          <Link class="dropdown-item" to="/companylogin">Company login</Link>  
+          <Link class="dropdown-item" to="/adminlogin">Admin login</Link>  
+          </div>
+        </div>
         {/* {(!localStorage.getItem("authToken"))?
         
 

@@ -12,7 +12,8 @@ import Loader from "../Loader";
 import { useAlert } from "react-alert";
 import MetaData from "../MetaData";
 import { useNavigate } from "react-router-dom";
-import {addItemsToCart} from "../../actions/cartAction"
+import {addItemsToCart} from "../../actions/cartAction";
+import Navbar from  "../../components/Navbar"
 
 
 
@@ -49,8 +50,10 @@ const JobDetails = () => {
       <Fragment>
 
   <MetaData title={`${job.title} -- ALPHA PLACEMENT`} />
+  <div><Navbar/></div>
+
+  
           <div className="JobDetails">
-          
             <div>
                 {job.images &&
                   job.images.map((item, i) => (
