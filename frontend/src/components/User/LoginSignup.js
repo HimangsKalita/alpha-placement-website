@@ -11,7 +11,7 @@ import { clearErrors, login, register } from "../../actions/userAction";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
-
+import Navbar from '../../components/Navbar';
 
 
 const LoginSignup = () => {
@@ -99,146 +99,153 @@ const LoginSignup = () => {
       };
 
   return (
-    <Fragment>
-      {loading ? (
-        <Loader />
-      ) : (
-        <Fragment>
-          <div className="LoginSignUpContainer">
-            <div className="LoginSignUpBox">
-              <div>
-                <div className="login_signUp_toggle">
-                  <p onClick={(e) => switchTabs(e, "login")}>LOGIN</p>
-                  <p onClick={(e) => switchTabs(e, "register")}>REGISTER</p>
-                </div>
-                <button ref={switcherTab}></button>
-              </div>
-              <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
-                <div className="loginEmail">
-                  <MailOutlineIcon />
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    required
-                    value={loginEmail}
-                    onChange={(e) => setLoginEmail(e.target.value)}
-                  />
-                </div>
-                <div className="loginPassword">
-                  <LockOpenIcon />
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    required
-                    value={loginPassword}
-                    onChange={(e) => setLoginPassword(e.target.value)}
-                  />
-                </div>
-                
-                <input type="submit" value="Login" className="loginBtn" />
-              </form>
-              <form
-                className="signUpForm"
-                ref={registerTab}
-                encType="multipart/form-data"
-                onSubmit={registerSubmit}
-              >
-                <div className="signUpName">
-                  <FaceIcon />
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    pattern=".{}"
-                    required
-                    name="name"
-                    value={name}
-                    onChange={registerDataChange}
-                  />
-                </div>
-                <div className="signUpEmail">
-                  <MailOutlineIcon />
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
-                    required
-                    name="email"
-                    value={email}
-                    onChange={registerDataChange}
-                  />
-                </div>
-                <div className="signUpPassword">
-                  <LockOpenIcon />
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    pattern=".{8,}"
-                    required
-                    name="password"
-                    value={password}
-                    title="Please enter at least 8 characters"
-                    onChange={registerDataChange}
-                  />
-                </div>
-                <div className="signUpPassword">
-                  <LockOpenIcon />
-                  <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    pattern={user.password}
-                    required
-                    name="confirmpassword"
-                    value={confirmpassword}
-                    title="Password doesn't match"
-                    onChange={registerDataChange}
+   <div>
+      <div><Navbar/></div>
+      <Fragment>
+        {loading ? (
+          <Loader />
+        ) : (
+          <Fragment>
+            <div><Navbar/></div>
+            <div>
+              <div><Navbar/></div>
+              <div className="LoginSignUpContainer">
+                <div className="LoginSignUpBox">
+                  <div>
+                    <div className="login_signUp_toggle">
+                      <p onClick={(e) => switchTabs(e, "login")}>LOGIN</p>
+                      <p onClick={(e) => switchTabs(e, "register")}>REGISTER</p>
+                    </div>
+                    <button ref={switcherTab}></button>
+                  </div>
+                  <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
+                    <div className="loginEmail">
+                      <MailOutlineIcon />
+                      <input
+                        type="email"
+                        placeholder="Email"
+                        required
+                        value={loginEmail}
+                        onChange={(e) => setLoginEmail(e.target.value)}
+                      />
+                    </div>
+                    <div className="loginPassword">
+                      <LockOpenIcon />
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        required
+                        value={loginPassword}
+                        onChange={(e) => setLoginPassword(e.target.value)}
+                      />
+                    </div>
                     
-                  />
+                    <input type="submit" value="Login" className="loginBtn" />
+                  </form>
+                  <form
+                    className="signUpForm"
+                    ref={registerTab}
+                    encType="multipart/form-data"
+                    onSubmit={registerSubmit}
+                  >
+                    <div className="signUpName">
+                      <FaceIcon />
+                      <input
+                        type="text"
+                        placeholder="Name"
+                        pattern=".{}"
+                        required
+                        name="name"
+                        value={name}
+                        onChange={registerDataChange}
+                      />
+                    </div>
+                    <div className="signUpEmail">
+                      <MailOutlineIcon />
+                      <input
+                        type="email"
+                        placeholder="Email"
+                        pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                        required
+                        name="email"
+                        value={email}
+                        onChange={registerDataChange}
+                      />
+                    </div>
+                    <div className="signUpPassword">
+                      <LockOpenIcon />
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        pattern=".{8,}"
+                        required
+                        name="password"
+                        value={password}
+                        title="Please enter at least 8 characters"
+                        onChange={registerDataChange}
+                      />
+                    </div>
+                    <div className="signUpPassword">
+                      <LockOpenIcon />
+                      <input
+                        type="password"
+                        placeholder="Confirm Password"
+                        pattern={user.password}
+                        required
+                        name="confirmpassword"
+                        value={confirmpassword}
+                        title="Password doesn't match"
+                        onChange={registerDataChange}
+                        
+                      />
+                    </div>
+                    <div className="signUpAddress">
+                      <HomeIcon />
+                      <input
+                        type="text"
+                        placeholder="Address"
+                        required
+                        name="address"
+                        value={address}
+                        onChange={registerDataChange}
+                      />
+                    </div>
+                    <div className="signUpPhone">
+                      <LocalPhoneIcon />
+                      <input
+                        type="tel"
+                        placeholder="Phone Number"
+                        pattern="[6-9]\d{9}"
+                        required
+                        name="phone"
+                        value={phone}
+                        title="Phone number format didn't match"
+                        onChange={registerDataChange}
+                    />
+                    </div>
+                    <div className="signUpPhone">
+                      <input
+                        type="text"
+                        placeholder="user or company"
+                        pattern="(user|company)"
+                        required
+                        name="role"
+                        value={role}
+                        title="Please enter user or company"
+                        onChange={registerDataChange}
+                      />
+                    </div>
+    
+    
+                    <input type="submit" value="Register" className="signUpBtn" />
+                  </form>
                 </div>
-                <div className="signUpAddress">
-                  <HomeIcon />
-                  <input
-                    type="text"
-                    placeholder="Address"
-                    required
-                    name="address"
-                    value={address}
-                    onChange={registerDataChange}
-                  />
-                </div>
-                <div className="signUpPhone">
-                  <LocalPhoneIcon />
-                  <input
-                    type="tel"
-                    placeholder="Phone Number"
-                    pattern="[6-9]\d{9}"
-                    required
-                    name="phone"
-                    value={phone}
-                    title="Phone number format didn't match"
-                    onChange={registerDataChange}
-                />
-                </div>
-                <div className="signUpPhone">
-                  <input
-                    type="text"
-                    placeholder="user or company"
-                    pattern="(user|company)"
-                    required
-                    name="role"
-                    value={role}
-                    title="Please enter user or company"
-                    onChange={registerDataChange}
-                  />
-                </div>
-
-
-                <input type="submit" value="Register" className="signUpBtn" />
-              </form>
+              </div>
             </div>
-          </div>
-        </Fragment>
-      )}
-    </Fragment>
+          </Fragment>
+        )}
+      </Fragment>
+   </div>
   )
 }
 

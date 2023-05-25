@@ -5,7 +5,7 @@ import LanguageDropdown from "../Dropdowns/LanguageDropdown";
 // import ThemeDropdown from "../Dropdowns/ThemeDropdown";
 import { checkStatus, submitCode } from "../../api";
 
-const Navbar = ({
+const Navi = ({
   language,
   setLanguage,
   setTheme,
@@ -77,4 +77,4 @@ const Navbar = ({
   );
 };
 
-export default Navbar;
+export default Navi;

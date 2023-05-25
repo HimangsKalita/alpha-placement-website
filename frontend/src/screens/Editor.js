@@ -4,7 +4,8 @@ import { boilerCodes } from "../boilerCodes";
 import CodeEditor from "../components/CodeEditor/CodeEditor";
 import CodeInput from "../components/CodeInput/CodeInput";
 import CodeOutput from "../components/CodeOutput/CodeOutput";
-import Navbar from "../components/Navbar/Navbar";
+import Navi from "../components/Navbar/Navi";
+import Navbar from '../components/Navbar';
 
 function Editor() {
   const [output, setOutput] = useState("");
@@ -27,9 +28,10 @@ function Editor() {
 
   return (
     <div class="vh-100 w-100">
+      <div><Navbar/></div>
       <div class="d-flex flex-md-row flex-column vh-100 w-100">
         <div class="d-flex flex-column w-100 flex-md-grow-2">
-          <Navbar
+          <Navi
             setLanguage={setLanguage}
             language={language}
             setTheme={setTheme}

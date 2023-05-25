@@ -3,6 +3,7 @@ import "./Search.css";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
 import MetaData from "../MetaData";
+import Navbar from '../Navbar';
 
 const Search = () => {
 
@@ -19,9 +20,15 @@ const Search = () => {
       };
   return (
     <Fragment>
+      <div><Navbar/></div>
+
     <div>
+    <div><Navbar/></div>
+
       <MetaData title="Search JOBS -- ALPHA PLACEMENT" />
       <form className="searchBox" onSubmit={searchSubmitHandler}>
+      {/* <div><Navbar/></div> */}
+
         <input
           type="text"
           placeholder="Search Jobs ..."

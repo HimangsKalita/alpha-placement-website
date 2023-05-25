@@ -36,7 +36,7 @@ export default function Login() {
     }
   return (
     <div>
-    <div><Navbar/></div>
+      <div><Navbar/></div>
       <div className="container mt-4">
 <form onSubmit={handleSubmit}>
    
