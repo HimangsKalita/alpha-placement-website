@@ -9,6 +9,7 @@ import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../MetaData";
 import LaunchIcon from "@material-ui/icons/Launch";
+import Navbar from "../Navbar";
 
 const MyApplications = () => {
 

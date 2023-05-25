@@ -13,14 +13,14 @@ import {
         const item = action.payload;
   
         const isItemExist = state.cartItems.find(
-          (i) => i.product === item.product
+          (i) => i.job === item.job
         );
   
         if (isItemExist) {
           return {
             ...state,
             cartItems: state.cartItems.map((i) =>
-              i.product === isItemExist.product ? item : i
+              i.job === isItemExist.job ? item : i
             ),
           };
         } else {

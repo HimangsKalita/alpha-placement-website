@@ -31,6 +31,9 @@ import ApplicationDetails from "./components/Application/ApplicationDetails.js"
 // import UpdateProfile from "./components/User/UpdateProfile.js"
 import Cart from "./components/Cart/Cart.js"
 import ConfirmApply from "./components/Cart/ConfirmApply.js"
+import Dashboard from "./components/admin/Dashboard.js"
+import JobList from "./components/admin/JobList.js"
+import NewJob from './components/admin/NewJob';
 
 
 
@@ -71,6 +74,9 @@ function App() {
           <Route exact path="/application/:id" element={< ApplicationDetails/>} />
           <Route exact path="cart" element={< Cart/>} />
           <Route exact path="apply" element={< ConfirmApply/>} />
+          <Route exact path="company/dashboard" element={< Dashboard/>} />
+          <Route exact path="company/jobs" element={< JobList/>} />
+          <Route exact path="company/job" element={< NewJob/>} />
 
           
         </Routes>
