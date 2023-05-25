@@ -7,6 +7,7 @@ import Loader from "../Loader";
 import { useParams } from "react-router-dom";
 import JobCard from "../../screens/JobCard";
 import MetaData from "../MetaData";
+import Navbar from "../Navbar";
 
 const Jobs = () => {
     const dispatch = useDispatch();
@@ -36,6 +37,8 @@ const Jobs = () => {
       ) : (
         <Fragment>
           <MetaData title="JOBS -- ALPHA PLACEMENT" />
+    <div><Navbar/></div>
+
           <h2 className="jobsHeading">Jobs</h2>
 
           <div className="jobs">

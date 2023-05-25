@@ -3,21 +3,23 @@ import { legacy_createStore as createStore,combineReducers, applyMiddleware } fr
 
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { jobDetailReducer, jobsReducer } from "./reducers/jobReducer";
-import { userReducer } from "./reducers/userReducer";
+import { jobDetailReducer, jobsReducer, newJobReducer } from "./reducers/jobReducer";
+import { profileReducer, userReducer } from "./reducers/userReducer";
+import { applicationDetailsReducer, myApplicationsReducer } from "./reducers/applicationReducer";
+import {cartReducer} from "./reducers/cartReducer"
 
 const reducer = combineReducers({
     jobs: jobsReducer,
     jobDetails: jobDetailReducer,
     user: userReducer,
-  //   profile: profileReducer,
+    profile: profileReducer,
   //   forgotPassword: forgotPasswordReducer,
-  //   cart: cartReducer,
+    cart: cartReducer,
   //   newOrder: newOrderReducer,
-  //   myOrders: myOrdersReducer,
-  //   orderDetails: orderDetailsReducer,
+    myApplications: myApplicationsReducer,
+    applicationDetails: applicationDetailsReducer,
   //   newReview: newReviewReducer,
-  //   newProduct: newProductReducer,
+    newJob: newJobReducer,
   //   product: productReducer,
   //   allOrders: allOrdersReducer,
   //   order: orderReducer,
@@ -32,9 +34,6 @@ const reducer = combineReducers({
       cartItems: localStorage.getItem("cartItems")
         ? JSON.parse(localStorage.getItem("cartItems"))
         : [],
-      shippingInfo: localStorage.getItem("shippingInfo")
-        ? JSON.parse(localStorage.getItem("shippingInfo"))
-        : {},
     },
   };
 

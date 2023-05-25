@@ -23,7 +23,7 @@ const CodeEditor = ({ theme, code, setCode, language }) => {
 			language={language}
 			value={code}
 			theme={theme}
-			className="text-3xl"
+			className="display-4"
 			defaultValue="//Write your code here"
 			onMount={handleEditorDidMount}
 			onChange={(value) => setCode(value)}

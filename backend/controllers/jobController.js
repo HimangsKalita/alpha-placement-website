@@ -31,6 +31,15 @@ exports.getAllJobs=catchAsyncErrors( async(req,res,next)=>{
     })
 })
 
+exports.getAdminJobs = catchAsyncErrors(async (req, res, next) => {
+    const jobs = await Job.find();
+  
+    res.status(200).json({
+      success: true,
+      jobs,
+    });
+  });
+
 exports.getJobDetails =catchAsyncErrors( async (req, res, next) => {
     const job = await Job.findById(req.params.id);
     if(!job){

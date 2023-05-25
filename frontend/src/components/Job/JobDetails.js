@@ -11,6 +11,9 @@ import { useParams } from "react-router-dom";
 import Loader from "../Loader";
 import { useAlert } from "react-alert";
 import MetaData from "../MetaData";
+import { useNavigate } from "react-router-dom";
+import {addItemsToCart} from "../../actions/cartAction";
+import Navbar from  "../../components/Navbar"
 
 
 
@@ -18,6 +21,7 @@ const JobDetails = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { id } = useParams();
+  const history = useNavigate()
 
   const { job, loading, error } = useSelector(
     (state) => state.jobDetails
@@ -34,14 +38,22 @@ const JobDetails = () => {
     }, [dispatch,  id, error, alert]);
 
 
+    const addToCartHandler = () => {
+      dispatch(addItemsToCart(id));
+      alert.success("Item Added To Cart");
+    };
+
+
   return (
     <Fragment>
       {loading? <Loader/> :
       <Fragment>
 
   <MetaData title={`${job.title} -- ALPHA PLACEMENT`} />
+  <div><Navbar/></div>
+
+  
           <div className="JobDetails">
-          
             <div>
                 {job.images &&
                   job.images.map((item, i) => (
@@ -73,7 +85,7 @@ const JobDetails = () => {
               <div className="detailsBlock-4">
                 Description : <p>{job.description}</p>
 
-                <button className="applyButton">APPLY</button>
+                <button className="applyButton" onClick={addToCartHandler}>ADD TO JOB MANAGER</button>
               </div>
             </div>
           </div>

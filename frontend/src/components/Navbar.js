@@ -2,14 +2,15 @@ import React from 'react'
 import {Link,useNavigate} from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import WorkIcon from '@mui/icons-material/Work';
 export default function Navbar() {
 
-  const navigate=useNavigate();
+  // const navigate=useNavigate();
 
-  const handleLogout=()=>{
-    localStorage.removeItem("authToken");
-    navigate("/login")
-  }
+  // const handleLogout=()=>{
+  //   localStorage.removeItem("authToken");
+  //   navigate("/login")
+  // }
 
   return (
     <div>
@@ -22,21 +23,44 @@ export default function Navbar() {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav me-auto mb-2">
         <li className="nav-item">
-          <Link className="nav-link fs-5" aria-current="page" to="/editor">CodeEditor</Link>
+          <Link className="nav-link fs-5" aria-current="page" to="/Editor">CodeEditor</Link>
         </li>
-        {/* <li className="nav-item">
+        <li className="nav-item">
           <Link className="nav-link fs-5" aria-current="page" to="/resume">Resume</Link>
-        </li> */}
+        </li>
         <li className="nav-item">
           <Link className="nav-link fs-5" aria-current="page" to="/jobs">Jobs</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link fs-5 active" aria-current="page" to="/search"><SearchIcon/></Link>
         </li>
+        {/* <li className="nav-item">
+          <Link className="nav-link fs-5 active" aria-current="page" to="/cart"><WorkIcon/></Link>
+        </li> */}
         <li className="nav-item">
           <Link className="nav-link fs-5 active" aria-current="page" to="/login"><AccountBoxIcon/></Link>
         </li>
-        {(!localStorage.getItem("authToken"))?
+
+        <div class="nav-item dropdown">
+          <Link className="nav-link dropdown-toggle btn btn-secondary border border-light fs-5 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Signup
+          </Link>
+          <div class="dropdown-menu">
+          <Link class="dropdown-item" to="/createuser">User signup</Link>
+    <Link class="dropdown-item" to="/createcompany">Company signup</Link>  
+          </div>
+        </div>
+    <div class="nav-item dropdown mx-3 float-right">
+          <Link className="nav-link dropdown-toggle btn btn-secondary border border-light fs-5 active" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Login
+          </Link>
+          <div class="dropdown-menu">
+          <Link class="dropdown-item" to="/login">User login</Link>
+          <Link class="dropdown-item" to="/companylogin">Company login</Link>  
+          <Link class="dropdown-item" to="/adminlogin">Admin login</Link>  
+          </div>
+        </div>
+        {/* {(!localStorage.getItem("authToken"))?
         
 
       <div className='d-flex float-right'>
@@ -44,18 +68,18 @@ export default function Navbar() {
       
       
     <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle btn btn-secondary border border-light fs-5 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <Link className="nav-link dropdown-toggle btn btn-secondary border border-light fs-5 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Signup
-          </a>
+          </Link>
           <div class="dropdown-menu">
           <Link class="dropdown-item" to="/createuser">User signup</Link>
     <Link class="dropdown-item" to="/createcompany">Company signup</Link>  
           </div>
         </div>
     <div class="nav-item dropdown mx-3 float-right">
-          <a class="nav-link dropdown-toggle btn btn-secondary border border-light fs-5 active" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <Link className="nav-link dropdown-toggle btn btn-secondary border border-light fs-5 active" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Login
-          </a>
+          </Link>
           <div class="dropdown-menu">
           <Link class="dropdown-item" to="/login">User login</Link>
           <Link class="dropdown-item" to="/companylogin">Company login</Link>  
@@ -71,7 +95,7 @@ export default function Navbar() {
         Logout
       </div>
       
-    } 
+    }  */}
     {/* <div className='d-flex'>
       <Link className="btn btn-secondary float-right mx-3  border border-light fs-5" to="/login" role="button">Login </Link>
       <Link className="btn btn-secondary float-right border border-light mx-3 fs-5" to="/createuser" role="button">Signup </Link>

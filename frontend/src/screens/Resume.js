@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
 
-export default function Resume() {
+import Header from "../components/Headers/Header";
+import Body from "../components/Body/Body";
+
+import "./Resume.css";
+
+function Resume() {
   return (
-    <div>
-      Resume
+    <div className="App">
+      {/* <Header /> */}
+      <Body />
     </div>
-  )
+  );
 }
+
+export default Resume;
