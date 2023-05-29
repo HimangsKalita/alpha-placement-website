@@ -4,6 +4,8 @@ import {
     ALL_JOB_SUCCESS,
     ADMIN_JOB_REQUEST,
     ADMIN_JOB_FAIL,
+    COMPANY_JOB_SUCCESS,
+    COMPANY_JOB_REQUEST,
     NEW_JOB_REQUEST,
     NEW_JOB_SUCCESS,
     NEW_JOB_FAIL,
@@ -13,6 +15,7 @@ import {
     DELETE_JOB_FAIL,
     DELETE_JOB_RESET,
     ADMIN_JOB_SUCCESS,
+    COMPANY_JOB_FAIL,
     JOB_DETAILS_REQUEST,
     JOB_DETAILS_FAIL,
     JOB_DETAILS_SUCCESS,
@@ -25,6 +28,7 @@ export const jobsReducer = (state = { jobs: [] }, action) => {
         
         case ALL_JOB_REQUEST:
           case ADMIN_JOB_REQUEST:
+          case COMPANY_JOB_REQUEST:
           return {
             loading: true,
             jobs: [],
@@ -38,6 +42,7 @@ export const jobsReducer = (state = { jobs: [] }, action) => {
               // filteredProductsCount: action.payload.filteredProductsCount,
             };
             case ADMIN_JOB_SUCCESS:
+            case COMPANY_JOB_SUCCESS:
             return {
               loading: false,
               jobs: action.payload,
@@ -45,6 +50,7 @@ export const jobsReducer = (state = { jobs: [] }, action) => {
 
         case ALL_JOB_FAIL:
           case ADMIN_JOB_FAIL:
+          case COMPANY_JOB_FAIL:
              return {
              loading: false,
              error: action.payload,

@@ -4,7 +4,7 @@ import "./jobList.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
-  getAdminJob,
+  getCompanyJob,
   deleteJob,
 } from "../../actions/jobAction";
 import { Link } from "react-router-dom";
@@ -51,7 +51,7 @@ const JobList = () => {
       dispatch({ type: DELETE_JOB_RESET });
     }
 
-    dispatch(getAdminJob());
+    dispatch(getCompanyJob());
   }, [dispatch, alert, error,deleteError,history,isDeleted]);
 
   const columns = [

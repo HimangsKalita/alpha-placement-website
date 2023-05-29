@@ -16,7 +16,9 @@ import {
     JOB_DETAILS_REQUEST,
     JOB_DETAILS_FAIL,
     JOB_DETAILS_SUCCESS,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    COMPANY_JOB_SUCCESS,
+    COMPANY_JOB_FAIL
 } from "../constants/jobConstant"
 
 
@@ -42,7 +44,7 @@ export const getAdminJob = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_JOB_REQUEST });
 
-    const { data } = await axios.get("/api/v1/company/jobs");
+    const { data } = await axios.get("/api/v1/admin/jobs");
 
     dispatch({
       type: ADMIN_JOB_SUCCESS,
@@ -51,6 +53,23 @@ export const getAdminJob = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: ADMIN_JOB_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+export const getCompanyJob = () => async (dispatch) => {
+  try {
+    dispatch({ type: COMPANY_JOB_SUCCESS });
+
+    const { data } = await axios.get("/api/v1/company/jobs");
+
+    dispatch({
+      type: COMPANY_JOB_SUCCESS,
+      payload: data.jobs,
+    });
+  } catch (error) {
+    dispatch({
+      type: COMPANY_JOB_FAIL,
       payload: error.response.data.message,
     });
   }
