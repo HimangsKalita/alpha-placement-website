@@ -13,12 +13,12 @@ import { Button } from "@material-ui/core";
 import MetaData from "../MetaData";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import SideBar from "./Sidebar";
 import { DELETE_JOB_RESET } from "../../constants/jobConstant";
 import { useNavigate } from "react-router-dom";
+import Sidebar2 from "./Sidebar2";
 // import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 
-const JobList = () => {
+const JobList2 = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
 
@@ -47,7 +47,7 @@ const JobList = () => {
 
     if (isDeleted) {
       alert.success("Job Deleted Successfully");
-      history("/company/dashboard");
+      history("/admin/dashboard2");
       dispatch({ type: DELETE_JOB_RESET });
     }
 
@@ -120,7 +120,7 @@ const JobList = () => {
       <MetaData title={`ALL JOBS - Admin`} />
 
       <div className="dashboard">
-        <SideBar />
+        <Sidebar2 />
         <div className="productListContainer">
           <h1 id="productListHeading">ALL JOBS</h1>
 
@@ -138,4 +138,4 @@ const JobList = () => {
   );
 };
 
-export default JobList;
+export default JobList2;

@@ -8,11 +8,15 @@ import {
     NEW_JOB_SUCCESS,
     NEW_JOB_FAIL,
     NEW_JOB_RESET,
+    DELETE_JOB_REQUEST,
+    DELETE_JOB_SUCCESS,
+    DELETE_JOB_FAIL,
+    DELETE_JOB_RESET,
     ADMIN_JOB_SUCCESS,
     JOB_DETAILS_REQUEST,
     JOB_DETAILS_FAIL,
     JOB_DETAILS_SUCCESS,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
 } from "../constants/jobConstant"
 
 
@@ -80,6 +84,41 @@ export const newJobReducer = (state = { job: {} }, action) => {
       return {
         ...state,
         success: false,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+export const jobReducer = (state = {}, action) => {
+  switch (action.type) {
+    case DELETE_JOB_REQUEST:
+    
+      return {
+        ...state,
+        loading: true,
+      };
+    case DELETE_JOB_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isDeleted: action.payload,
+      };
+    case DELETE_JOB_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case DELETE_JOB_RESET:
+      return {
+        ...state,
+        isDeleted: false,
       };
     case CLEAR_ERRORS:
       return {

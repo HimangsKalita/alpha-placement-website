@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Sidebar from "./Sidebar.js";
+import Sidebar2 from "./Sidebar2.js";
 import "./dashboard.css";
 import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
@@ -23,9 +23,9 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <Sidebar/>
+      <Sidebar2/>
       <div className="dashboardContainer">
-      <Typography component="h1">Company Dashboard</Typography>
+      <Typography component="h1">Admin Dashboard</Typography>
       <div className="dashboardSummary">
       <div>
             {/* <p>
@@ -33,18 +33,14 @@ const Dashboard = () => {
             </p> */}
           </div>
           <div className="dashboardSummaryBox2">
-            <Link to="/company/jobs">
+            <Link to="/admin/users">
+              <p>Users</p>
+              <p>{users && users.length}</p>
+            </Link>
+            <Link to="/admin/jobs">
               <p>Job</p>
               <p>{jobs && jobs.length}</p>
             </Link>
-            <Link to="/company/applications">
-              <p>Applications</p>
-              <p>5</p>
-            </Link>
-            {/* <Link to="/company/users">
-              <p>Users</p>
-              <p>{users && users.length}</p>
-            </Link> */}
           </div>
 
       </div>

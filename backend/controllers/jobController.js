@@ -2,9 +2,31 @@ const Job=require("../models/jobModel");
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ApiFeatures = require("../utils/apifeatures");
+const cloudinary = require("cloudinary");
 
 exports.createjob=catchAsyncErrors(async(req,res,next)=>{
+    let images = [];
 
+  if (typeof req.body.images === "string") {
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
+  }
+
+  const imagesLinks = [];
+
+  for (let i = 0; i < images.length; i++) {
+    const result = await cloudinary.v2.uploader.upload(images[i], {
+      folder: "jobs",
+    });
+
+    imagesLinks.push({
+      public_id: result.public_id,
+      url: result.secure_url,
+    });
+  }
+
+  req.body.images = imagesLinks;
     req.body.user = req.user.id
 
     const job = await Job.create(req.body);
@@ -32,6 +54,8 @@ exports.getAllJobs=catchAsyncErrors( async(req,res,next)=>{
 })
 
 exports.getAdminJobs = catchAsyncErrors(async (req, res, next) => {
+    const user1=req.params.user
+    const query={user:user1}
     const jobs = await Job.find();
   
     res.status(200).json({
@@ -75,6 +99,10 @@ exports.deleteJob =catchAsyncErrors( async (req, res, next) => {
     if(!job){
         return next(new ErrorHandler("product not found",404));
     }
+    for (let i = 0; i < job.images.length; i++) {
+      await cloudinary.v2.uploader.destroy(job.images[i].public_id);
+    }
+  
     await job.deleteOne();
 
     res.status(200).json({

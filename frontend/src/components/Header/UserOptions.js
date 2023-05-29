@@ -48,10 +48,17 @@ const UserOptions = ({user}) => {
           func: dashboard,
         });
       }
+    if (user.role === "admin") {
+        options.unshift({
+          icon: <DashboardIcon />,
+          name: "Dashboard",
+          func: dashboard1,
+        });
+      }
 
-      // function dashboard1() {
-      //   history("/admin/dashboard");
-      // }
+      function dashboard1() {
+        history("/admin/dashboard2");
+      }
       function dashboard() {
         history("/company/dashboard");
       }

@@ -3,8 +3,8 @@ import { legacy_createStore as createStore,combineReducers, applyMiddleware } fr
 
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { jobDetailReducer, jobsReducer, newJobReducer } from "./reducers/jobReducer";
-import { profileReducer, userReducer } from "./reducers/userReducer";
+import { jobDetailReducer, jobReducer, jobsReducer, newJobReducer } from "./reducers/jobReducer";
+import { allUsersReducer, profileReducer, userDetailsReducer, userReducer } from "./reducers/userReducer";
 import { applicationDetailsReducer, myApplicationsReducer } from "./reducers/applicationReducer";
 import {cartReducer} from "./reducers/cartReducer"
 
@@ -20,11 +20,11 @@ const reducer = combineReducers({
     applicationDetails: applicationDetailsReducer,
   //   newReview: newReviewReducer,
     newJob: newJobReducer,
-  //   product: productReducer,
+    job: jobReducer,
   //   allOrders: allOrdersReducer,
   //   order: orderReducer,
-  //   allUsers: allUsersReducer,
-  //   userDetails: userDetailsReducer,
+    allUsers: allUsersReducer,
+    userDetails: userDetailsReducer,
   //   productReviews: productReviewsReducer,
   //   review: reviewReducer,
   });

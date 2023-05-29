@@ -15,7 +15,7 @@ import RateReviewIcon from "@material-ui/icons/RateReview";
 const Sidebar = () => {
   return (
     <div className='sidebar'>
-    <Link to="/">ALPHA PLACEMENT</Link>
+    <Link className='title' to="/">ALPHA PLACEMENT</Link>
       <Link to="/company/dashboard">
         <p>
           <DashboardIcon /> Dashboard
@@ -43,11 +43,11 @@ const Sidebar = () => {
           Applications
         </p>
       </Link>
-      <Link to="/company/users">
+      {/* <Link to="/company/users">
         <p>
           <PeopleIcon /> Users
         </p>
-      </Link>
+      </Link> */}
     </div>
   );
 };

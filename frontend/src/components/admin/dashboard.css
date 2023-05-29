@@ -13,7 +13,8 @@
   }
   
   .dashboardContainer > h1 {
-    color: rgba(0, 0, 0, 0.733);
+    color: rgba(255, 255, 255, 0.733);
+    background-color: white;
     font: 300 2rem "Roboto";
     text-align: center;
     width: 50%;
@@ -55,6 +56,7 @@
     align-items: center;
     flex-direction: column;
   }
+ 
   
   .dashboardSummaryBox2 > a:first-child {
     background-color: rgb(255, 110, 110);

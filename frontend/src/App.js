@@ -34,6 +34,11 @@ import ConfirmApply from "./components/Cart/ConfirmApply.js"
 import Dashboard from "./components/admin/Dashboard.js"
 import JobList from "./components/admin/JobList.js"
 import NewJob from './components/admin/NewJob';
+import UsersList from './components/admin/UsersList';
+import UpdateUser from './components/admin/UpdateUser';
+import Contact from './screens/Contact';
+import Dashboard2 from './components/admin/Dashboard2';
+import JobList2 from './components/admin/JobList2';
 
 
 
@@ -66,6 +71,7 @@ function App() {
           <Route exact path="/job/:id" element={<JobDetails />} />
           <Route exact path="/jobs" element={<Jobs />} />
           <Route  path="/jobs/:keyword" element={<Jobs />} />
+          <Route  path="/contact" element={<Contact />} />
           <Route exact path="/search" element={<Search />} />
           <Route exact path="/login" element={<LoginSignup />} />
           <Route exact path="/account" element={< Profile/>} />
@@ -75,8 +81,12 @@ function App() {
           <Route exact path="cart" element={< Cart/>} />
           <Route exact path="apply" element={< ConfirmApply/>} />
           <Route exact path="company/dashboard" element={< Dashboard/>} />
+          <Route exact path="admin/dashboard2" element={< Dashboard2/>} />
           <Route exact path="company/jobs" element={< JobList/>} />
+          <Route exact path="admin/jobs" element={< JobList2/>} />
           <Route exact path="company/job" element={< NewJob/>} />
+          <Route exact path="admin/users" element={< UsersList/>} />
+          <Route exact path="admin/user/:id" element={< UpdateUser/>} />
 
           
         </Routes>

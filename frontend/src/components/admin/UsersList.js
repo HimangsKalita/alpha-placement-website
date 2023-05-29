@@ -2,36 +2,34 @@ import React, { Fragment, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "./jobList.css";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  clearErrors,
-  getAdminJob,
-  deleteJob,
-} from "../../actions/jobAction";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MetaData from "../MetaData";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import SideBar from "./Sidebar";
-import { DELETE_JOB_RESET } from "../../constants/jobConstant";
+import SideBar2 from "./Sidebar2";
+import { getAllUsers, clearErrors, deleteUser } from "../../actions/userAction";
+import { DELETE_USER_RESET } from "../../constants/userConstants";
 import { useNavigate } from "react-router-dom";
-// import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
+import Sidebar2 from "./Sidebar2";
 
-const JobList = () => {
+const UsersList = () => {
   const dispatch = useDispatch();
-  const history = useNavigate();
+  const history=useNavigate();
 
   const alert = useAlert();
 
-  const { error, jobs } = useSelector((state) => state.jobs);
+  const { error, users } = useSelector((state) => state.allUsers);
 
-  const { error: deleteError, isDeleted } = useSelector(
-    (state) => state.job
-  );
+  const {
+    error: deleteError,
+    isDeleted,
+    message,
+  } = useSelector((state) => state.profile);
 
-  const deleteJobHandler = (id) => {
-    dispatch(deleteJob(id));
+  const deleteUserHandler = (id) => {
+    dispatch(deleteUser(id));
   };
 
   useEffect(() => {
@@ -46,37 +44,41 @@ const JobList = () => {
     }
 
     if (isDeleted) {
-      alert.success("Job Deleted Successfully");
-      history("/company/dashboard");
-      dispatch({ type: DELETE_JOB_RESET });
+      alert.success(message);
+      history("/admin/users");
+      dispatch({ type: DELETE_USER_RESET });
     }
 
-    dispatch(getAdminJob());
-  }, [dispatch, alert, error,deleteError,history,isDeleted]);
+    dispatch(getAllUsers());
+  }, [dispatch, alert, error, deleteError, history, isDeleted, message]);
 
   const columns = [
-    { field: "id", headerName: "Job ID", minWidth: 200, flex: 0.5 },
+    { field: "id", headerName: "User ID", minWidth: 180, flex: 0.8 },
 
+    {
+      field: "email",
+      headerName: "Email",
+      minWidth: 200,
+      flex: 1,
+    },
     {
       field: "name",
       headerName: "Name",
-      minWidth: 350,
-      flex: 1,
+      minWidth: 150,
+      flex: 0.5,
     },
-    // {
-    //   field: "stock",
-    //   headerName: "Stock",
-    //   type: "number",
-    //   minWidth: 150,
-    //   flex: 0.3,
-    // },
 
     {
-      field: "ctc",
-      headerName: "CTC",
+      field: "role",
+      headerName: "Role",
       type: "number",
-      minWidth: 270,
-      flex: 0.5,
+      minWidth: 150,
+      flex: 0.3,
+      cellClassName: (params) => {
+        return params.getValue(params.id, "role") === "admin"
+          ? "greenColor"
+          : "redColor";
+      },
     },
 
     {
@@ -89,10 +91,13 @@ const JobList = () => {
       renderCell: (params) => {
         return (
           <Fragment>
+            <Link to={`/admin/user/${params.getValue(params.id, "id")}`}>
+              <EditIcon />
+            </Link>
 
             <Button
               onClick={() =>
-                deleteJobHandler(params.getValue(params.id, "id"))
+                deleteUserHandler(params.getValue(params.id, "id"))
               }
             >
               <DeleteIcon />
@@ -105,24 +110,24 @@ const JobList = () => {
 
   const rows = [];
 
-  jobs &&
-    jobs.forEach((item) => {
+  users &&
+    users.forEach((item) => {
       rows.push({
         id: item._id,
-        // stock: item.Stock,
-        ctc: item.ctc,
-        name: item.title,
+        role: item.role,
+        email: item.email,
+        name: item.name,
       });
     });
 
   return (
     <Fragment>
-      <MetaData title={`ALL JOBS - Admin`} />
+      <MetaData title={`ALL USERS - Admin`} />
 
       <div className="dashboard">
-        <SideBar />
+        <Sidebar2 />
         <div className="productListContainer">
-          <h1 id="productListHeading">ALL JOBS</h1>
+          <h1 id="productListHeading">ALL USERS</h1>
 
           <DataGrid
             rows={rows}
@@ -138,4 +143,4 @@ const JobList = () => {
   );
 };
 
-export default JobList;
+export default UsersList;
