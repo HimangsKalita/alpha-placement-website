@@ -40,7 +40,7 @@ const JobDetails = () => {
 
     const addToCartHandler = () => {
       dispatch(addItemsToCart(id));
-      alert.success("Item Added To Cart");
+      alert.success("Job applied");
     };
 
 
@@ -70,7 +70,7 @@ const JobDetails = () => {
               <div>
               <div className="detailsBlock-1">
                 <h2>{job.title}</h2>
-                <p >Job # {job._id}</p>
+                {/* <p >Job # {job._id}</p> */}
               </div>
               <div className="detailsBlock-3">
                 <h1>{`${job.ctc}`}</h1>

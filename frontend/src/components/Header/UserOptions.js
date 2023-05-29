@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useAlert } from 'react-alert';
 import { useDispatch,useSelector } from 'react-redux';
 import { logout } from '../../actions/userAction';
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import ShopIcon from '@mui/icons-material/Shop';
 
 
 const UserOptions = ({user}) => {
@@ -29,11 +29,11 @@ const UserOptions = ({user}) => {
         { icon: <HomeIcon />, name: "Home", func: home },
         {
           icon: (
-            <ShoppingCartIcon
+            <ShopIcon
               style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}
             />
           ),
-          name: `Cart(${cartItems.length})`,
+          name: `Manager(${cartItems.length})`,
           func: cart,
         },
         { icon: <WorkIcon />, name: "Jobs", func: jobs },

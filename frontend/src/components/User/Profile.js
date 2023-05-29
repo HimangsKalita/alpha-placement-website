@@ -49,7 +49,7 @@ const Profile = () => {
             </div>
 
             <div>
-              <Link to="/applications">My Appiled Jobs</Link>
+              {/* <Link to="/applications">My Appiled Jobs</Link> */}
               {/* <Link to="/password/update">Change Password</Link> */}
             </div>
           </div>

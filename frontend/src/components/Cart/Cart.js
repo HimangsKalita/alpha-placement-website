@@ -37,7 +37,7 @@ const Cart = () => {
             <div className="cartHeader">
               <p>Job</p>
               {/* <p>Quantity</p> */}
-              <p>CTC</p>
+              <p>CTC (lpa)</p>
             </div>
 
             {cartItems &&
