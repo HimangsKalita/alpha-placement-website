@@ -229,6 +229,7 @@ function Editor(props) {
           label="Name"
           placeholder="Enter your full name eg. Aashu"
           value={values.name}
+          pattern="^(\w\w+)\s(\w+)$"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, name: event.target.value }))
           }

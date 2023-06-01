@@ -153,10 +153,11 @@ const LoginSignup = () => {
                       <input
                         type="text"
                         placeholder="Name"
-                        pattern=".{}"
+                        pattern="^(\w\w+)\s(\w+)$"
                         required
                         name="name"
                         value={name}
+                        title="Enter valid name"
                         onChange={registerDataChange}
                       />
                     </div>
@@ -169,6 +170,7 @@ const LoginSignup = () => {
                         required
                         name="email"
                         value={email}
+                        title="Enter valid email address"
                         onChange={registerDataChange}
                       />
                     </div>
